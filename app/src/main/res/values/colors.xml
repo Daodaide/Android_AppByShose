@@ -17,5 +17,8 @@
     <color name="Black">#FF000000</color>
     <color name="White">#FFFFFFFF</color>
     <color name="LightRed">#D54B4B</color>
+    <color name="sing_up_color">#000000</color>
+    <color name="ic_launcher_foreground">#FFFFFF</color>
+    <color name="_bg__android_small___1_ek2_color">#FFFFFF</color>
 
 </resources>

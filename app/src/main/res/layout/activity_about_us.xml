@@ -4,4 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.AboutUsActivity"/>
+    tools:context=".View.AboutUsActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="186dp"
+        android:layout_height="209dp"
+        android:text="We champion continual progress for athletes and sport by taking action to help athletes reach their potential. Every job at NIKE, Inc. is grounded in a team-first mindset, cultivating a culture of innovation and a shared purpose to leave an enduring impact."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="385dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="161dp"
+        android:layout_height="169dp"
+        app:srcCompat="@drawable/vector"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="141dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="161dp"
+        android:layout_height="169dp"
+        app:srcCompat="@drawable/vector"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="385dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="190dp"
+        android:layout_height="208dp"
+        android:text="We champion continual progress for athletes and sport by taking action to help athletes reach their potential. Every job at NIKE, Inc. is grounded in a team-first mindset, cultivating a culture of innovation and a shared purpose to leave an enduring impact."
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="141dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/icon_left"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="75dp"
+        android:layout_height="29dp"
+        android:breakStrategy="high_quality"
+        android:hyphenationFrequency="normal"
+        android:text="Abot Us"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
