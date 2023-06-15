@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/anh"
@@ -18,6 +19,7 @@
             android:layout_height="match_parent"
             android:ellipsize="end"
             android:maxLines="1"
+            android:padding="10dp"
             android:text="Sign Up"
             android:textColorHint="#000000"
             android:textSize="15dp"
@@ -37,13 +39,13 @@
             android:id="@+id/retro_sneakers_and_shoes_store_logo_2"
             android:layout_width="150dp"
             android:layout_height="129dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="50dp"
             android:contentDescription="retro_sneakers_and_shoes_store_logo_2"
             android:src="@drawable/retro_sneakers_and_shoes_store_logo_2"
             tools:ignore="MissingConstraints"
+
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="141dp" />
-
 
         <EditText
 
@@ -51,24 +53,30 @@
             android:layout_width="272dp"
             android:layout_height="33dp"
             android:layout_marginBottom="15dp"
-
+            android:background="@drawable/ilumia"
             android:drawableLeft="@drawable/vector_ek7"
+            android:drawablePadding="10dp"
             android:ems="15"
-            android:hint="       UserName"
+            android:hint="UserName"
             android:padding="10dp"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextText2"
             android:layout_width="271dp"
             android:layout_height="32dp"
             android:layout_marginBottom="15dp"
-            android:drawableStart="@drawable/icon_lock"
+            android:background="@drawable/ilumia"
+            android:drawableLeft="@drawable/icon_lock"
+            android:drawablePadding="10dp"
             android:ems="15"
-            android:hint="      PassWork"
+            android:hint="PassWork"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textSize="12dp" />
+            android:paddingTop="10dp"
+            android:textSize="12dp"
+            tools:ignore="Autofill" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +94,7 @@
             android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="@color/Grey"
             android:gravity="center"
             android:text="Login"
             android:textSize="12dp"
@@ -99,7 +107,8 @@
             android:id="@+id/textView12"
             android:layout_width="90dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="130dp"
+            android:layout_marginBottom="140dp"
+            android:background="@color/Grey"
             android:gravity="center"
             android:text="Exit"
             android:textSize="12dp"
@@ -110,5 +119,6 @@
 
 
     </LinearLayout>
+
 
 </RelativeLayout>
