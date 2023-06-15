@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 
@@ -16,14 +15,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn_login = findViewById(R.id.btn_launch_test_activity);
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        Button btnLaunchTestActivity = findViewById(R.id.btn_launch_test_activity);
+        btnLaunchTestActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }
