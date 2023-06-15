@@ -1,63 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anh"
+
     tools:context=".View.ChatActivity">
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        app:srcCompat="@drawable/retro_sneakers_and_shoes_store_logo_2"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="30dp"
-        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:srcCompat="@drawable/icon_cart"
-        tools:layout_editor_absoluteX="371dp"
-        tools:layout_editor_absoluteY="30dp"
-        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:gravity="center"
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:srcCompat="@drawable/icon_left"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="30dp"
-        tools:ignore="MissingConstraints" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imageView30"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:srcCompat="@drawable/icon_sent"
-        tools:layout_editor_absoluteX="371dp"
-        tools:layout_editor_absoluteY="674dp"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:srcCompat="@drawable/retro_sneakers_and_shoes_store_logo_2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="171dp"
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="303dp"
-        android:layout_height="23dp"
-        android:background="#D1D1D1"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="674dp"
-        tools:ignore="MissingConstraints" />
+            tools:layout_editor_absoluteY="30dp" />
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="115dp"
-        android:layout_height="19dp"
-        android:text="Send Message..."
-        android:textSize="13dp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="677dp"
-        tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:foregroundGravity="right"
+        android:gravity="end">
+
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            app:srcCompat="@drawable/icon_cart"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="371dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="right"
+
+        android:gravity="bottom">
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="56dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:padding="10dp"
+            app:srcCompat="@drawable/icon_sent" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="312dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/conner"
+
+            android:padding="10dp"
+            android:text="messager...." />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
