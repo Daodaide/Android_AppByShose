@@ -39,7 +39,7 @@
             android:id="@+id/retro_sneakers_and_shoes_store_logo_2"
             android:layout_width="150dp"
             android:layout_height="129dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="50dp"
             android:contentDescription="retro_sneakers_and_shoes_store_logo_2"
             android:src="@drawable/retro_sneakers_and_shoes_store_logo_2"
             tools:ignore="MissingConstraints"
@@ -59,7 +59,8 @@
             android:ems="15"
             android:hint="UserName"
             android:padding="10dp"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextText2"
@@ -74,7 +75,8 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:paddingTop="10dp"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            tools:ignore="Autofill" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,7 +107,7 @@
             android:id="@+id/textView12"
             android:layout_width="90dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="130dp"
+            android:layout_marginBottom="140dp"
             android:background="@color/Grey"
             android:gravity="center"
             android:text="Exit"
@@ -117,5 +119,6 @@
 
 
     </LinearLayout>
+
 
 </RelativeLayout>
