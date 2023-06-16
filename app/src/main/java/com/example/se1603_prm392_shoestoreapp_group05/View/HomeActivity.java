@@ -1,12 +1,16 @@
 package com.example.se1603_prm392_shoestoreapp_group05.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.example.se1603_prm392_shoestoreapp_group05.R;
@@ -79,36 +84,98 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewFlipperHome);
         navigationView = findViewById(R.id.navigationViewHome);
         recyclerView = findViewById(R.id.recyclerviewHome);
-        listView = findViewById(R.id.listviewHome);
+//        listView = findViewById(R.id.listviewHome);
         linearLayout1 = findViewById(R.id.linerboderlogo1);
         linearLayout2 = findViewById(R.id.linerboderlogo2);
         drawerLayout = findViewById(R.id.drawerlayoutHome);
-        final String[] menuItems = {"Home", "Contact", "Product"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menuItems);
-        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+        TextView HometextView = findViewById(R.id.nav_home);
+        TextView ProductstextView = findViewById(R.id.nav_products);
+        TextView CarttextView = findViewById(R.id.nav_cart);
+        TextView ChattextView = findViewById(R.id.nav_chat);
+        TextView ContacttextView = findViewById(R.id.nav_contact);
+        TextView AboutustextView = findViewById(R.id.nav_aboutus);
+
+        LinearLayout NikeLinearlayout = findViewById(R.id.linerboderlogo1);
+        LinearLayout PumaLinearlayout = findViewById(R.id.linerboderlogo2);
+
+        ImageView CartImageview = findViewById(R.id.CartimageView);
+        ImageView ChatImageview = findViewById(R.id.ChatimageView);
+
+        HometextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Xử lý sự kiện khi mục menu được chọn
-                switch (position) {
-                    case 0:
-                        // Chuyển đến trang Home
-                        // startFragment(new HomeFragment());
-                        break;
-                    case 1:
-                        // Chuyển đến trang Contact
-                        // startFragment(new ContactFragment());
-                        break;
-                    case 2:
-                        // Chuyển đến trang Product
-                        // startFragment(new ProductFragment());
-                        break;
-                }
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                startActivity(intent);
 
-                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+        ProductstextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ListProductActivity.class);
+                startActivity(intent);
+            }
+        });
+        CarttextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+        ChattextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+        ContacttextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ContactActivity.class);
+                startActivity(intent);
+            }
+        });
+        AboutustextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, AboutUsActivity.class);
+                startActivity(intent);
             }
         });
 
+        NikeLinearlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, NikeProduct.class);
+                startActivity(intent);
+            }
+        });
+        PumaLinearlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, PumaProduct.class);
+                startActivity(intent);
+            }
+        });
+
+        CartImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+        ChatImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
