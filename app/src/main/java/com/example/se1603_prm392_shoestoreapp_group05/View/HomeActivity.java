@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -36,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Assignviews();
-//        ActionBar();
+        ActionBar();
         ActionViewFlipper();
     }
 
@@ -54,10 +56,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void ActionViewFlipper(){
         ArrayList<String> Advertisement = new ArrayList<>();
-        Advertisement.add("https://advertisingvietnam.com/wp-content/uploads/2018/09/nike-image.jpg");
-        Advertisement.add("https://media.vneconomy.vn/w800/images/upload/2021/10/08/puma4.jpg");
-        Advertisement.add("https://advertisingvietnam.com/wp-content/uploads/2018/09/nike-image.jpg");
-        Advertisement.add("https://advertisingvietnam.com/wp-content/uploads/2018/09/nike-image.jpg");
+        Advertisement.add("https://i.imgur.com/iQfHbs0.png");
+        Advertisement.add("https://i.imgur.com/MynT1hc.png");
+        Advertisement.add("https://i.imgur.com/qQ6HemS.png");
+        Advertisement.add("https://i.imgur.com/zDnJg5x.png");
+        Advertisement.add("https://i.imgur.com/59hVrow.png");
         for (int i=0; i<Advertisement.size(); i++){
             ImageView imageView = new ImageView(getApplicationContext());
             Picasso.get().load(Advertisement.get(i)).into(imageView);
@@ -80,5 +83,32 @@ public class HomeActivity extends AppCompatActivity {
         linearLayout1 = findViewById(R.id.linerboderlogo1);
         linearLayout2 = findViewById(R.id.linerboderlogo2);
         drawerLayout = findViewById(R.id.drawerlayoutHome);
+        final String[] menuItems = {"Home", "Contact", "Product"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menuItems);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Xử lý sự kiện khi mục menu được chọn
+                switch (position) {
+                    case 0:
+                        // Chuyển đến trang Home
+                        // startFragment(new HomeFragment());
+                        break;
+                    case 1:
+                        // Chuyển đến trang Contact
+                        // startFragment(new ContactFragment());
+                        break;
+                    case 2:
+                        // Chuyển đến trang Product
+                        // startFragment(new ProductFragment());
+                        break;
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
     }
 }
