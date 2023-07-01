@@ -1,6 +1,5 @@
 package com.example.se1603_prm392_shoestoreapp_group05.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -9,24 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductDBHelper;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductData;
+import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,6 +44,16 @@ public class HomeActivity extends AppCompatActivity {
         Assignviews();
         ActionBar();
         ActionViewFlipper();
+
+        ProductDBHelper dbHelper = new ProductDBHelper(this);
+        List<Product> productList = dbHelper.getAllProducts();
+
+
+        List<Product> sampleProducts = ProductData.getSampleProducts();
+        List<Product> newProduct = new ArrayList<>();
+        newProduct.addAll(productList);
+        newProduct.addAll(sampleProducts);
+
     }
 
     private void ActionBar(){

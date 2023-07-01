@@ -148,7 +148,11 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewHome"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:padding="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2" />
             </LinearLayout>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
@@ -234,6 +238,7 @@
                     android:textColor="@color/black"
                     android:text="About us"
                     android:textSize="20sp"/>
+
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
