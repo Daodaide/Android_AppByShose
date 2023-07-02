@@ -1,14 +1,27 @@
 package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
+import kotlin.text.UStringsKt;
+
 public class Product {
     private int ProductID;
     private String ProductImage;
     private String ProductName;
     private double ProductPrice;
-    public Product(String ProductImage, String ProductName, double ProductPrice) {
+
+    private String ProductBrand;
+
+    private String ProductSize;
+    private String ProductDescribe;
+    private String ProductColor;
+    public Product(int ProductID, String ProductImage, String ProductName, double ProductPrice, String ProductBrand, String ProductDescribe, String ProductColor, String ProductSize) {
+        this.ProductID = ProductID;
         this.ProductImage = ProductImage;
         this.ProductName = ProductName;
         this.ProductPrice = ProductPrice;
+        this.ProductBrand = ProductBrand;
+        this.ProductDescribe = ProductDescribe;
+        this.ProductColor = ProductColor;
+        this.ProductSize = ProductSize;
     }
 
     public int getProductID() {
@@ -41,5 +54,36 @@ public class Product {
 
     public void setProductPrice(double Price) {
         this.ProductPrice = Price;
+    }
+
+    public String getBrand() {
+        return ProductBrand;
+    }
+
+    public void setBrand(String brand) {
+        this.ProductBrand = brand;
+    }
+
+    public String getProductDescribe() {
+        return ProductDescribe;
+    }
+
+    public void setProductDescribe(String Describe) {
+        this.ProductDescribe = Describe;
+    }
+    public String getProductColor() {
+        return ProductColor;
+    }
+
+    public void setProductColor(String Color) {
+        this.ProductColor = Color;
+    }
+
+    public String getProductSize() {
+        return ProductSize;
+    }
+
+    public void setProductSize(String size) {
+        this.ProductSize = size;
     }
 }

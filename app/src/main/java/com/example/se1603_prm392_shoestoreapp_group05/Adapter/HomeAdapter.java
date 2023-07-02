@@ -16,15 +16,20 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHolder>{
     private List<Product> productList;
     private Context context;
 
-    public ProductAdapter(Context context, List<Product> productList) {
+
+
+    public HomeAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
     }
-
+    public void setProducts(List<Product> products) {
+        this.productList = products;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,6 +52,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private ImageView imageViewProduct;
         private TextView textViewName;
         private TextView textViewPrice;
+
+
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
