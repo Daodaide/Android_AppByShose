@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,14 +14,14 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/imageview_product"
+            android:id="@+id/imageview_brandproduct"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/textview_name"
+            android:id="@+id/textview_brandname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -29,7 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textview_price"
+            android:id="@+id/textview_brandprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"

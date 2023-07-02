@@ -4,21 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductDBHelper;
-import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductData;
+import com.example.se1603_prm392_shoestoreapp_group05.Adapter.HomeAdapter;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.google.android.material.navigation.NavigationView;
@@ -33,10 +36,13 @@ public class HomeActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     RecyclerView recyclerView;
     NavigationView navigationView;
-    ListView listView;
+
     LinearLayout linearLayout1;
     LinearLayout linearLayout2;
     DrawerLayout drawerLayout;
+    private List<Product> newProduct;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +51,26 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
 
-        ProductDBHelper dbHelper = new ProductDBHelper(this);
-        List<Product> productList = dbHelper.getAllProducts();
+        ProductsDBHelper dbHelper = new ProductsDBHelper(this);
+        newProduct = dbHelper.getAllProducts();
 
 
-        List<Product> sampleProducts = ProductData.getSampleProducts();
-        List<Product> newProduct = new ArrayList<>();
-        newProduct.addAll(productList);
+
+        List<Product> sampleProducts = ProductsData.getSampleProducts();
         newProduct.addAll(sampleProducts);
+
+        HomeAdapter adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setAdapter(adapter);
+
+        adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
+
+
 
     }
 
@@ -93,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewFlipperHome);
         navigationView = findViewById(R.id.navigationViewHome);
         recyclerView = findViewById(R.id.recyclerviewHome);
-//        listView = findViewById(R.id.listviewHome);
+
         linearLayout1 = findViewById(R.id.linerboderlogo1);
         linearLayout2 = findViewById(R.id.linerboderlogo2);
         drawerLayout = findViewById(R.id.drawerlayoutHome);
@@ -186,5 +204,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
+
+
 }
