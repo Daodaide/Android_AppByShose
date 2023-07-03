@@ -29,7 +29,7 @@ public class NikeProduct extends AppCompatActivity {
         List<Product> nikeProducts = getNikeProducts();
 
         // Khởi tạo nikeProductAdapter với danh sách sản phẩm của thương hiệu Nike
-        nikeProductAdapter = new NikeProductAdapter(nikeProducts);
+        nikeProductAdapter = new NikeProductAdapter(this,nikeProducts);
 
         // Thiết lập layout manager cho RecyclerView (GridLayoutManager với spanCount là 2)
         recyclerViewNike.setLayoutManager(new GridLayoutManager(this, 2));
