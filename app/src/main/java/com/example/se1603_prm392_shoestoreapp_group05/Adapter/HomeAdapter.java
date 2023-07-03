@@ -1,6 +1,8 @@
 package com.example.se1603_prm392_shoestoreapp_group05.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
+import com.example.se1603_prm392_shoestoreapp_group05.View.ProductdetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,10 +29,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHol
         this.context = context;
         this.productList = productList;
     }
-    public void setProducts(List<Product> products) {
-        this.productList = products;
-        notifyDataSetChanged();
-    }
+//    public void setProducts(List<Product> products) {
+//        this.productList = products;
+//        notifyDataSetChanged();
+//    }
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHol
         return productList.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder {
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageViewProduct;
         private TextView textViewName;
         private TextView textViewPrice;
@@ -60,12 +63,32 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHol
             imageViewProduct = itemView.findViewById(R.id.imageview_product);
             textViewName = itemView.findViewById(R.id.textview_name);
             textViewPrice = itemView.findViewById(R.id.textview_price);
+
+            // Set click listener on the item view
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Product product) {
             Picasso.get().load(product.getProductImage()).into(imageViewProduct);
             textViewName.setText(product.getProductName());
             textViewPrice.setText(String.valueOf(product.getProductPrice()));
+        }
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Product product = productList.get(position);
+                Intent intent = new Intent(context, ProductdetailActivity.class);
+                intent.putExtra("productID", product.getProductID());
+                intent.putExtra("productImage", product.getProductImage());
+                intent.putExtra("productName", product.getProductName());
+                intent.putExtra("productPrice", product.getProductPrice());
+                intent.putExtra("productBrand", product.getBrand());
+                intent.putExtra("productDescribe", product.getProductDescribe());
+                intent.putExtra("productColor", product.getProductColor());
+                intent.putExtra("productSize", product.getProductSize());
+                context.startActivity(intent);
+            }
         }
     }
 }
