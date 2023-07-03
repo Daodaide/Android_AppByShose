@@ -54,8 +54,6 @@ public class HomeActivity extends AppCompatActivity {
         ProductsDBHelper dbHelper = new ProductsDBHelper(this);
         newProduct = dbHelper.getAllProducts();
 
-
-
         List<Product> sampleProducts = ProductsData.getSampleProducts();
         newProduct.addAll(sampleProducts);
 
@@ -65,12 +63,8 @@ public class HomeActivity extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(adapter);
-
         adapter = new HomeAdapter(this, newProduct);
         recyclerView.setAdapter(adapter);
-
-
 
     }
 

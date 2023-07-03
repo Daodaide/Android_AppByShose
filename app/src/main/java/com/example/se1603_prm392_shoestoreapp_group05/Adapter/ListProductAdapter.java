@@ -1,5 +1,7 @@
 package com.example.se1603_prm392_shoestoreapp_group05.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
+import com.example.se1603_prm392_shoestoreapp_group05.View.ProductdetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,8 +21,10 @@ import java.util.List;
 public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.ProductViewHolder> {
 
     private List<Product> productList;
+    private Context context;
 
-    public ListProductAdapter(List<Product> productList) {
+    public ListProductAdapter(Context context, List<Product> productList) {
+        this.context = context;
         this.productList = productList;
     }
 
@@ -41,26 +46,42 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         return productList.size();
     }
 
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private ImageView imageView;
+        private TextView nameTextView;
+        private TextView priceTextView;
 
+        public ProductViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.imageview_brandproduct3);
+            nameTextView = itemView.findViewById(R.id.textview_brandname3);
+            priceTextView = itemView.findViewById(R.id.textview_brandprice2);
 
-        static class ProductViewHolder extends RecyclerView.ViewHolder {
+            itemView.setOnClickListener(this);
+        }
 
-            private ImageView imageView;
-            private TextView nameTextView;
-            private TextView priceTextView;
+        public void bind(Product product) {
+            Picasso.get().load(product.getProductImage()).into(imageView);
+            nameTextView.setText(product.getProductName());
+            priceTextView.setText(String.valueOf(product.getProductPrice()));
+        }
 
-            public ProductViewHolder(@NonNull View itemView) {
-                super(itemView);
-                imageView = itemView.findViewById(R.id.imageview_brandproduct3);
-                nameTextView = itemView.findViewById(R.id.textview_brandname3);
-                priceTextView = itemView.findViewById(R.id.textview_brandprice2);
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Product product = productList.get(position);
+                Intent intent = new Intent(context, ProductdetailActivity.class);
+                intent.putExtra("productID", product.getProductID());
+                intent.putExtra("productImage", product.getProductImage());
+                intent.putExtra("productName", product.getProductName());
+                intent.putExtra("productPrice", product.getProductPrice());
+                intent.putExtra("productBrand", product.getBrand());
+                intent.putExtra("productDescribe", product.getProductDescribe());
+                intent.putExtra("productColor", product.getProductColor());
+                intent.putExtra("productSize", product.getProductSize());
+                context.startActivity(intent);
             }
-
-            public void bind(Product product) {
-                // Load the image using Picasso
-                Picasso.get().load(product.getProductImage()).into(imageView);
-                nameTextView.setText(product.getProductName());
-                priceTextView.setText(String.valueOf(product.getProductPrice()));
-            }
+        }
     }
 }

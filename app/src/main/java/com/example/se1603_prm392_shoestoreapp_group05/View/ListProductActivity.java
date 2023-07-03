@@ -30,7 +30,7 @@ public class ListProductActivity extends AppCompatActivity {
 
     private void setupRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewProduct);
-        ListProductAdapter adapter = new ListProductAdapter(productList);
+        ListProductAdapter adapter = new ListProductAdapter(this,productList);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
     }
