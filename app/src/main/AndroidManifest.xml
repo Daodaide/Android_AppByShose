@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Design.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".View.SearchProduct"
+            android:exported="false" />
+        <activity
             android:name=".View.PumaProduct"
             android:exported="false" />
         <activity
@@ -52,9 +55,6 @@
             android:exported="false" />
         <activity
             android:name=".View.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,6 +62,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".View.MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

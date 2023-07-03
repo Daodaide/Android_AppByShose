@@ -26,10 +26,10 @@ public class PumaProduct extends AppCompatActivity {
         recyclerViewPuma = findViewById(R.id.recyclerviewPuma);
 
         // Lấy danh sách sản phẩm của thương hiệu Nike
-        List<Product> nikeProducts = getNikeProducts();
+        List<Product> pumaProducts = getNikeProducts();
 
         // Khởi tạo nikeProductAdapter với danh sách sản phẩm của thương hiệu Nike
-        pumaProductAdapter = new NikeProductAdapter(nikeProducts);
+        pumaProductAdapter = new NikeProductAdapter(this,pumaProducts);
 
         // Thiết lập layout manager cho RecyclerView (GridLayoutManager với spanCount là 2)
         recyclerViewPuma.setLayoutManager(new GridLayoutManager(this, 2));
@@ -38,7 +38,7 @@ public class PumaProduct extends AppCompatActivity {
         recyclerViewPuma.setAdapter(pumaProductAdapter);
     }
     private List<Product> getNikeProducts() {
-        List<Product> nikeProducts = new ArrayList<>();
+        List<Product> pumaProducts = new ArrayList<>();
 
         // Lấy danh sách sản phẩm từ HomeData
         List<Product> allProducts = ProductsData.getSampleProducts();
@@ -46,10 +46,10 @@ public class PumaProduct extends AppCompatActivity {
         // Lọc danh sách sản phẩm của thương hiệu Nike
         for (Product product : allProducts) {
             if (product.getBrand().equals("Puma")) {
-                nikeProducts.add(product);
+                pumaProducts.add(product);
             }
         }
 
-        return nikeProducts;
+        return pumaProducts;
     }
 }

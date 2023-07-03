@@ -25,7 +25,6 @@ public class ProductdetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productdetail);
-        // Ánh xạ views
         imageViewProduct = findViewById(R.id.imageViewProduct);
         txtPdName = findViewById(R.id.txtPdName);
         txtPdColor = findViewById(R.id.txtPdColor);
@@ -39,7 +38,7 @@ public class ProductdetailActivity extends AppCompatActivity {
             int productID = intent.getIntExtra("productID", 0);
             String productImage = intent.getStringExtra("productImage");
             String productName = intent.getStringExtra("productName");
-            float productPrice = intent.getFloatExtra("productPrice", 0.0f);
+            String productPrice = intent.getStringExtra("productPrice");
             String productBrand = intent.getStringExtra("productBrand");
             String productDescribe = intent.getStringExtra("productDescribe");
             String productColor = intent.getStringExtra("productColor");
@@ -50,7 +49,7 @@ public class ProductdetailActivity extends AppCompatActivity {
             txtPdName.setText(productName);
             txtPdColor.setText(productColor);
             txtPdSize.setText(productSize);
-            txtPdPrice.setText(String.valueOf(productPrice));
+            txtPdPrice.setText(productPrice);
             txtPdDescribe.setText(productDescribe);
         }
     }

@@ -2,7 +2,6 @@ package com.example.se1603_prm392_shoestoreapp_group05.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,65 +18,56 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHolder>{
-    private List<Product> productList;
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
+    private List<Product> searchResults;
     private Context context;
 
-
-
-    public HomeAdapter(Context context, List<Product> productList) {
+    public SearchAdapter(Context context, List<Product> searchResults) {
         this.context = context;
-        this.productList = productList;
+        this.searchResults = searchResults;
     }
-//    public void setProducts(List<Product> products) {
-//        this.productList = products;
-//        notifyDataSetChanged();
-//    }
+
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_home, parent, false);
-        return new ProductViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Tạo ViewHolder từ layout của một item trong RecyclerView
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search_product, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Hiển thị thông tin sản phẩm trong ViewHolder
+        Product product = searchResults.get(position);
         holder.bind(product);
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return searchResults.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView imageViewProduct;
-        private TextView textViewName;
-        private TextView textViewPrice;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView productNameTextView;
+        private ImageView productImageView;
 
-
-
-        public ProductViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewProduct = itemView.findViewById(R.id.imageview_product);
-            textViewName = itemView.findViewById(R.id.textview_name);
-            textViewPrice = itemView.findViewById(R.id.textview_price);
-
-            // Set click listener on the item view
+            productNameTextView = itemView.findViewById(R.id.textview_productName);
+            productImageView = itemView.findViewById(R.id.imageSearch_product);
             itemView.setOnClickListener(this);
         }
 
         public void bind(Product product) {
-            Picasso.get().load(product.getProductImage()).into(imageViewProduct);
-            textViewName.setText(product.getProductName());
-            textViewPrice.setText(String.valueOf(product.getProductPrice()));
+            // Hiển thị thông tin sản phẩm trong ViewHolder
+            productNameTextView.setText(product.getProductName());
+            Picasso.get().load(product.getProductImage()).into(productImageView);
         }
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                Product product = productList.get(position);
+                Product product = searchResults.get(position);
                 Intent intent = new Intent(context, ProductdetailActivity.class);
                 intent.putExtra("productID", product.getProductID());
                 intent.putExtra("productImage", product.getProductImage());
@@ -90,5 +80,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHol
                 context.startActivity(intent);
             }
         }
+    }
+
+    public void setSearchResults(List<Product> searchResults) {
+        this.searchResults = searchResults;
     }
 }
