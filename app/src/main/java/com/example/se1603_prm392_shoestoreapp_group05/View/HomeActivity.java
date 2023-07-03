@@ -124,6 +124,7 @@ public class HomeActivity extends AppCompatActivity {
 
         ImageView CartImageview = findViewById(R.id.CartimageView);
         ImageView ChatImageview = findViewById(R.id.ChatimageView);
+        ImageView SearchImageview = findViewById(R.id.SearchimageView);
 
         HometextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,7 +199,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        SearchImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SearchProduct.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
