@@ -57,14 +57,14 @@ public class HomeActivity extends AppCompatActivity {
         List<Product> sampleProducts = ProductsData.getSampleProducts();
         newProduct.addAll(sampleProducts);
 
-        HomeAdapter adapter = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapter);
+        HomeAdapter adapters = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapters);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapter);
+        adapters = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapters);
 
     }
 
