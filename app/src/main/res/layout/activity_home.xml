@@ -36,12 +36,14 @@
                        android:textColor="@color/black"
                        android:textSize="20sp"
                        android:textStyle="bold" />
-                   <ImageView
-                       android:id="@+id/SearchimageView"
-                       android:layout_width="24dp"
-                       android:layout_height="27dp"
-                       android:layout_marginRight="15dp"
-                       app:srcCompat="@drawable/baseline_search_24" />
+                   <androidx.appcompat.widget.SearchView
+                       android:id="@+id/searchView"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:iconifiedByDefault="false"
+                       android:queryHint="Search"
+                       android:layout_marginRight="15dp" />
+
                    <ImageView
                        android:id="@+id/CartimageView"
                        android:layout_width="24dp"
@@ -140,7 +142,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
@@ -150,7 +151,7 @@
                     android:text="New Product"
                     android:textColor="@color/Black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"></TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewHome"
@@ -244,15 +245,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:text="About us"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:layout_marginTop="40dp"
-                    android:id="@+id/nav_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Login"
                     android:textSize="20sp"/>
 
             </LinearLayout>

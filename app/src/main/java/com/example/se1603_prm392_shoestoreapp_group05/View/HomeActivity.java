@@ -23,6 +23,7 @@ import com.example.se1603_prm392_shoestoreapp_group05.Adapter.HomeAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
+//import com.example.se1603_prm392_shoestoreapp_group05.Model.Utils;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -51,20 +52,41 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
 
+//        if (Utils.isLoggedIn(HomeActivity.this)) { // Của Đạo Code
+//            // Đã đăng nhập, chuyển đến màn hình Home
+//            String loggedInUser = Utils.getLoggedInUsername(HomeActivity.this);
+//            TextView usernameTextView = findViewById(R.id.username);
+//            usernameTextView.setText(loggedInUser);
+//        } else {
+//            // Chưa đăng nhập, chuyển đến màn hình đăng nhập
+//            Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
+//            startActivity(loginIntent);
+//            finish(); // Kết thúc màn hình HomeActivity
+//        }
+
+
+        Intent intent = getIntent();// của đạo code
+        String username = intent.getStringExtra("username");
+
+        // Hiển thị tên người đăng nhập trên giao diện
+        TextView usernameTextView = findViewById(R.id.welcome_text);
+        usernameTextView.setText("Welcome, " + username + "!");
+
+
         ProductsDBHelper dbHelper = new ProductsDBHelper(this);
         newProduct = dbHelper.getAllProducts();
 
         List<Product> sampleProducts = ProductsData.getSampleProducts();
         newProduct.addAll(sampleProducts);
 
-        HomeAdapter adapters = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapters);
+        HomeAdapter adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapters = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapters);
+        adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
 
     }
 

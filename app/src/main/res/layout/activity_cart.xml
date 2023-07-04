@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F8F8"
+    android:backgroundTint="#FAF9F9"
     tools:context=".View.CartActivity"
     tools:layout_editor_absoluteX="6dp"
     tools:layout_editor_absoluteY="0dp">
-
-
-
 
 
     <LinearLayout
@@ -24,9 +22,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Cart"
-            android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/Black"
             android:textSize="24sp" />
 
@@ -50,7 +49,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Quantity: "
-                android:textSize="16sp" />
+                android:textColor="#1E0101"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/text_total_quantity"
@@ -58,14 +59,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="0"
-                android:textSize="16sp" />
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text=" | Total Price: "
-                android:textSize="16sp" />
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/text_total_price"
@@ -73,16 +78,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="$0.00"
-                android:textSize="16sp" />
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Nút Checkout -->
         <Button
             android:id="@+id/button_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="By Now" />
+            android:background="@color/White"
+            android:text="By Now"
+            android:textColor="#000000" />
 
     </LinearLayout>
 

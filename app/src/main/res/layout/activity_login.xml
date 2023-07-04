@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btn_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/anh"
@@ -13,7 +12,7 @@
         android:layout_height="50dp"
         android:gravity="end">
 
-        <TextView
+        <Button
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -21,9 +20,9 @@
             android:maxLines="1"
             android:padding="10dp"
             android:text="Sign Up"
-            android:textColorHint="#000000"
             android:textSize="15dp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +48,7 @@
 
         <EditText
 
-            android:id="@+id/editTextText"
+            android:id="@+id/username"
             android:layout_width="272dp"
             android:layout_height="33dp"
             android:layout_marginBottom="15dp"
@@ -59,11 +58,12 @@
             android:ems="15"
             android:hint="UserName"
             android:padding="10dp"
+            android:textColor="#000000"
             android:textSize="12dp"
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/password"
             android:layout_width="271dp"
             android:layout_height="32dp"
             android:layout_marginBottom="15dp"
@@ -71,50 +71,39 @@
             android:drawableLeft="@drawable/icon_lock"
             android:drawablePadding="10dp"
             android:ems="15"
-            android:hint="PassWork"
+            android:hint="Passwork"
             android:inputType="textPassword"
             android:padding="10dp"
             android:paddingTop="10dp"
+            android:textColor="#090000"
             android:textSize="12dp"
             tools:ignore="Autofill" />
 
         <TextView
+            android:id="@+id/edt_fogotpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginRight="33dp"
             android:layout_marginBottom="20dp"
             android:text="Fogotpassword?"
-            android:textColor="#000"
 
+            android:textColor="#000"
             android:textSize="15dp" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="90dp"
-            android:layout_height="30dp"
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="143dp"
+            android:layout_height="34dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/Grey"
+            android:background="@drawable/vien"
             android:gravity="center"
             android:text="Login"
+            android:textColor="#090909"
             android:textSize="12dp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="74dp"
-            tools:layout_editor_absoluteY="451dp" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="140dp"
-            android:background="@color/Grey"
-            android:gravity="center"
-            android:text="Exit"
-            android:textSize="12dp"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="451dp" />
 
 
