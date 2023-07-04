@@ -118,6 +118,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView ChattextView = findViewById(R.id.nav_chat);
         TextView ContacttextView = findViewById(R.id.nav_contact);
         TextView AboutustextView = findViewById(R.id.nav_aboutus);
+        TextView LogintextView = findViewById(R.id.nav_login);
 
         LinearLayout NikeLinearlayout = findViewById(R.id.linerboderlogo1);
         LinearLayout PumaLinearlayout = findViewById(R.id.linerboderlogo2);
@@ -166,6 +167,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, AboutUsActivity.class);
+                startActivity(intent);
+            }
+        });
+        LogintextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
