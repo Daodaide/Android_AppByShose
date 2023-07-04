@@ -52,25 +52,47 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
 
-//        if (Utils.isLoggedIn(HomeActivity.this)) { // Của Đạo Code
-//            // Đã đăng nhập, chuyển đến màn hình Home
-//            String loggedInUser = Utils.getLoggedInUsername(HomeActivity.this);
-//            TextView usernameTextView = findViewById(R.id.username);
-//            usernameTextView.setText(loggedInUser);
-//        } else {
-//            // Chưa đăng nhập, chuyển đến màn hình đăng nhập
-//            Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
-//            startActivity(loginIntent);
-//            finish(); // Kết thúc màn hình HomeActivity
-//        }
+        String username = getIntent().getStringExtra("USERNAME");
+        TextView usernameTextView = findViewById(R.id.nav_login);
+        TextView logoutTextView = findViewById(R.id.nav_Logout);
+
+        if (username != null) {
+            // Đã đăng nhập, hiển thị tên người dùng và nút "Logout"
+            usernameTextView.setText("Welcome, " + username + "!");
+            usernameTextView.setOnClickListener(null); // Vô hiệu hóa sự kiện click
+
+            logoutTextView.setVisibility(View.VISIBLE); // Hiển thị nút "Logout"
+            logoutTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Thực hiện đăng xuất
+                    logout();
+                }
+
+                private void logout() {
+                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        } else {
+            // Chưa đăng nhập, hiển thị chữ "Login"
+            usernameTextView.setText("Login");
+
+            logoutTextView.setVisibility(View.GONE); // Ẩn nút "Logout"
+            usernameTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Chuyển đến trang Login
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+            
+        }
 
 
-        Intent intent = getIntent();// của đạo code
-        String username = intent.getStringExtra("username");
 
-        // Hiển thị tên người đăng nhập trên giao diện
-        TextView usernameTextView = findViewById(R.id.welcome_text);
-        usernameTextView.setText("Welcome, " + username + "!");
 
 
         ProductsDBHelper dbHelper = new ProductsDBHelper(this);
@@ -89,6 +111,8 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+
+    
 
     private void ActionBar(){
         setSupportActionBar(toolbar);
