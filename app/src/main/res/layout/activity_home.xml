@@ -36,13 +36,6 @@
                        android:textColor="@color/black"
                        android:textSize="20sp"
                        android:textStyle="bold" />
-                   <androidx.appcompat.widget.SearchView
-                       android:id="@+id/searchView"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:iconifiedByDefault="false"
-                       android:queryHint="Search"
-                       android:layout_marginRight="15dp" />
 
                    <ImageView
                        android:id="@+id/CartimageView"
@@ -56,7 +49,6 @@
                        android:layout_width="24dp"
                        android:layout_height="27dp"
                        app:srcCompat="@drawable/icon_chat" />
-
                </LinearLayout>
 
             </androidx.appcompat.widget.Toolbar>
@@ -156,11 +148,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewHome"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:padding="8dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2" />
+                    android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
@@ -246,7 +234,14 @@
                     android:textColor="@color/black"
                     android:text="About us"
                     android:textSize="20sp"/>
-
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/welcome_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="About us"
+                    android:textSize="20sp"/>
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
