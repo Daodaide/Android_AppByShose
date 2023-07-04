@@ -23,6 +23,7 @@ import com.example.se1603_prm392_shoestoreapp_group05.Adapter.HomeAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
+//import com.example.se1603_prm392_shoestoreapp_group05.Model.Utils;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -51,22 +52,67 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar();
         ActionViewFlipper();
 
+        String username = getIntent().getStringExtra("USERNAME");
+        TextView usernameTextView = findViewById(R.id.nav_login);
+        TextView logoutTextView = findViewById(R.id.nav_Logout);
+
+        if (username != null) {
+            // Đã đăng nhập, hiển thị tên người dùng và nút "Logout"
+            usernameTextView.setText("Welcome, " + username + "!");
+            usernameTextView.setOnClickListener(null); // Vô hiệu hóa sự kiện click
+
+            logoutTextView.setVisibility(View.VISIBLE); // Hiển thị nút "Logout"
+            logoutTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Thực hiện đăng xuất
+                    logout();
+                }
+
+                private void logout() {
+                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        } else {
+            // Chưa đăng nhập, hiển thị chữ "Login"
+            usernameTextView.setText("Login");
+
+            logoutTextView.setVisibility(View.GONE); // Ẩn nút "Logout"
+            usernameTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Chuyển đến trang Login
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+            
+        }
+
+
+
+
+
         ProductsDBHelper dbHelper = new ProductsDBHelper(this);
         newProduct = dbHelper.getAllProducts();
 
         List<Product> sampleProducts = ProductsData.getSampleProducts();
         newProduct.addAll(sampleProducts);
 
-        HomeAdapter adapters = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapters);
+        HomeAdapter adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapters = new HomeAdapter(this, newProduct);
-        recyclerView.setAdapter(adapters);
+        adapter = new HomeAdapter(this, newProduct);
+        recyclerView.setAdapter(adapter);
 
     }
+
+    
 
     private void ActionBar(){
         setSupportActionBar(toolbar);
