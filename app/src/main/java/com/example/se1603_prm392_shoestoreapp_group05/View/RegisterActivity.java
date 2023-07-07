@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.se1603_prm392_shoestoreapp_group05.Data.DatabaseHelper;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.RegisterHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etUsername, etPassword, etPasswordConfirm, etEmail, etPhoneNum, etAddress;
     private Button btnRegister;
 
-    private DatabaseHelper databaseHelper;
+    private RegisterHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new RegisterHelper(this);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
             SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
             // Check if the email already exists in the database
-            String query = "SELECT * FROM " + DatabaseHelper.TABLE_USER + " WHERE " + DatabaseHelper.COLUMN_EMAIL + "=?";
+            String query = "SELECT * FROM " + RegisterHelper.TABLE_USER + " WHERE " + RegisterHelper.COLUMN_EMAIL + "=?";
             Cursor cursor = db.rawQuery(query, new String[]{email});
             if (cursor.moveToFirst()) {
                 // Email already exists
@@ -86,13 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 // Email is unique, proceed with registration
                 ContentValues values = new ContentValues();
-                values.put(DatabaseHelper.COLUMN_USERNAME, username);
-                values.put(DatabaseHelper.COLUMN_PASSWORD, password);
-                values.put(DatabaseHelper.COLUMN_EMAIL, email);
-                values.put(DatabaseHelper.COLUMN_PHONE, phoneNum);
-                values.put(DatabaseHelper.COLUMN_ADDRESS, address);
+                values.put(RegisterHelper.COLUMN_USERNAME, username);
+                values.put(RegisterHelper.COLUMN_PASSWORD, password);
+                values.put(RegisterHelper.COLUMN_EMAIL, email);
+                values.put(RegisterHelper.COLUMN_PHONE, phoneNum);
+                values.put(RegisterHelper.COLUMN_ADDRESS, address);
 
-                long result = db.insert(DatabaseHelper.TABLE_USER, null, values);
+                long result = db.insert(RegisterHelper.TABLE_USER, null, values);
 
                 if (result == -1) {
                     Toast.makeText(this, "Failed to register", Toast.LENGTH_SHORT).show();

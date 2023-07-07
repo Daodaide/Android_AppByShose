@@ -1,6 +1,5 @@
 package com.example.se1603_prm392_shoestoreapp_group05.View;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.se1603_prm392_shoestoreapp_group05.Data.DatabaseHelper;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.RegisterHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
 
-    private DatabaseHelper databaseHelper;
+    private RegisterHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.btn_login);
 
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new RegisterHelper(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,14 +72,14 @@ public class LoginActivity extends AppCompatActivity {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
         String[] projection = {
-                DatabaseHelper.COLUMN_ID
+                RegisterHelper.COLUMN_ID
         };
 
-        String selection = DatabaseHelper.COLUMN_USERNAME + " = ? AND " + DatabaseHelper.COLUMN_PASSWORD + " = ?";
+        String selection = RegisterHelper.COLUMN_USERNAME + " = ? AND " + RegisterHelper.COLUMN_PASSWORD + " = ?";
         String[] selectionArgs = {username, password};
 
         Cursor cursor = db.query(
-                DatabaseHelper.TABLE_USER,
+                RegisterHelper.TABLE_USER,
                 projection,
                 selection,
                 selectionArgs,
