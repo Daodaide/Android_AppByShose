@@ -12,7 +12,8 @@
         android:id="@+id/detail1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/imageViewProduct"
@@ -61,6 +62,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
         android:textColor="@color/Black" />
 
     <TextView

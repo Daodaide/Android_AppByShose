@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@color/White"
-            android:text="By Now"
+            android:text="Buy Now"
             android:textColor="#000000" />
 
     </LinearLayout>
