@@ -2,7 +2,7 @@ package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
 import kotlin.text.UStringsKt;
 
-public class Product {
+public class    Product {
     private int ProductID;
     private String ProductImage;
     private String ProductName;
