@@ -2,22 +2,24 @@ package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
 public class Message {
     private String sender;
-    private String content;
+    private String message;
+    private String timestamp;
 
-    public Message() {
-        // Empty constructor needed for Firebase
-    }
-
-    public Message(String sender, String content) {
+    public Message(String sender, String message) {
         this.sender = sender;
-        this.content = content;
+        this.message = message;
+        this.timestamp = timestamp;
     }
 
     public String getSender() {
         return sender;
     }
 
-    public String getContent() {
-        return content;
+    public String getMessage() {
+        return message;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
     }
 }

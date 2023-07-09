@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.se1603_prm392_shoestoreapp_group05.Adapter.ChatAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Adapter.HomeAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
@@ -198,7 +199,7 @@ public class HomeActivity extends AppCompatActivity {
         ChattextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ChatAdapter.class);
                 startActivity(intent);
             }
         });
