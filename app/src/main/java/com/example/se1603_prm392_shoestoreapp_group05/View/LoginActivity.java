@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
-
     private RegisterHelper databaseHelper;
 
     @Override

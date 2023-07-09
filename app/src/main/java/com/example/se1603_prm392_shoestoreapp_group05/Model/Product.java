@@ -13,6 +13,8 @@ public class    Product {
     private String ProductSize;
     private String ProductDescribe;
     private String ProductColor;
+
+
     public Product(int ProductID, String ProductImage, String ProductName, double ProductPrice, String ProductBrand, String ProductDescribe, String ProductColor, String ProductSize) {
         this.ProductID = ProductID;
         this.ProductImage = ProductImage;
@@ -22,6 +24,7 @@ public class    Product {
         this.ProductDescribe = ProductDescribe;
         this.ProductColor = ProductColor;
         this.ProductSize = ProductSize;
+
     }
 
     public int getProductID() {
@@ -86,4 +89,6 @@ public class    Product {
     public void setProductSize(String size) {
         this.ProductSize = size;
     }
+
+
 }
