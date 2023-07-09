@@ -42,12 +42,29 @@
                         android:layout_height="27dp"
                         android:layout_marginRight="15dp"
                         app:srcCompat="@drawable/baseline_search_24" />
-                    <ImageView
-                        android:id="@+id/CartimageView"
-                        android:layout_width="24dp"
-                        android:layout_height="27dp"
-                        android:layout_marginRight="15dp"
-                        app:srcCompat="@drawable/icon_cart" />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        >
+
+                        <com.nex3z.notificationbadge.NotificationBadge
+                            android:id="@+id/menu_sl"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top|right"
+                            android:layout_marginTop="15dp">
+
+                        </com.nex3z.notificationbadge.NotificationBadge>
+
+                        <ImageView
+                            android:id="@+id/CartimageView"
+                            android:layout_width="24dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/icon_cart" />
+                    </FrameLayout>
                     <ImageView
                         android:id="@+id/ChatimageView"
                         android:layout_marginRight="15dp"
