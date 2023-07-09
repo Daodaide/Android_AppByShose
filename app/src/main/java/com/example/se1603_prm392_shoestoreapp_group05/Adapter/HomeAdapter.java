@@ -43,7 +43,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.bind(product);
+
+        holder.textViewName.setText(product.getProductName());
+        holder.textViewPrice.setText(String.format("$%.2f", product.getProductPrice()));
+        Picasso.get().load(product.getProductImage()).into(holder.imageViewProduct);
     }
 
     @Override

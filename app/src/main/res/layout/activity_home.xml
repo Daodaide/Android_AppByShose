@@ -42,12 +42,29 @@
                         android:layout_height="27dp"
                         android:layout_marginRight="15dp"
                         app:srcCompat="@drawable/baseline_search_24" />
-                    <ImageView
-                        android:id="@+id/CartimageView"
-                        android:layout_width="24dp"
-                        android:layout_height="27dp"
-                        android:layout_marginRight="15dp"
-                        app:srcCompat="@drawable/icon_cart" />
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        >
+
+                        <com.nex3z.notificationbadge.NotificationBadge
+                            android:id="@+id/menu_sl"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top|right"
+                            android:layout_marginTop="15dp">
+
+                        </com.nex3z.notificationbadge.NotificationBadge>
+
+                        <ImageView
+                            android:id="@+id/CartimageView"
+                            android:layout_width="24dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/icon_cart" />
+                    </FrameLayout>
                     <ImageView
                         android:id="@+id/ChatimageView"
                         android:layout_marginRight="15dp"
@@ -185,7 +202,7 @@
 
                     <TextView
                         android:id="@+id/nav_menu"
-                        android:layout_width="20dp"
+                        android:layout_width="30dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="35dp"
                         android:layout_marginTop="10dp"
@@ -197,7 +214,7 @@
 
                 </LinearLayout>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,7 +222,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_products"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -213,7 +230,7 @@
                     android:text="Product"
                     android:textSize="20sp"/>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +238,7 @@
                     android:text="Cart"
                     android:textSize="20sp"/>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -229,7 +246,7 @@
                     android:text="Chat"
                     android:textSize="20sp"/>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -237,7 +254,7 @@
                     android:text="Contact"
                     android:textSize="20sp"/>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_aboutus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -246,7 +263,7 @@
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -254,7 +271,7 @@
                     android:text="Login"
                     android:textSize="20sp"/>
                 <TextView
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/nav_Logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

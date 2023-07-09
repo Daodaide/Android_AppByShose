@@ -46,36 +46,38 @@
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="141dp" />
 
-        <EditText
 
+        <EditText
             android:id="@+id/username"
-            android:layout_width="272dp"
-            android:layout_height="33dp"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/ilumia"
+            android:background="@drawable/conner"
             android:drawableLeft="@drawable/vector_ek7"
-            android:drawablePadding="10dp"
+            android:drawablePadding="20dp"
             android:ems="15"
             android:hint="UserName"
             android:padding="10dp"
             android:textColor="#000000"
+            android:textColorHint="@color/Black"
             android:textSize="12dp"
             tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="271dp"
-            android:layout_height="32dp"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/ilumia"
+            android:background="@drawable/conner"
             android:drawableLeft="@drawable/icon_lock"
-            android:drawablePadding="10dp"
+            android:drawablePadding="20dp"
             android:ems="15"
-            android:hint="Passwork"
+            android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:paddingTop="10dp"
-            android:textColor="#090000"
+            android:textColor="#000000"
+            android:textColorHint="@color/Black"
             android:textSize="12dp"
             tools:ignore="Autofill" />
 

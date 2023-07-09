@@ -25,6 +25,7 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_COLOR = "ProductBrand";
     private static final String COLUMN_DESCRIBE = "ProductDescribe";
 
+
     public ProductsDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -39,6 +40,7 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
                 COLUMN_DESCRIBE + " TEXT," +
                 COLUMN_COLOR + " TEXT," +
                 COLUMN_SIZE + " TEXT" +
+
                 ")";
         db.execSQL(createTableQuery);
     }
@@ -78,7 +80,7 @@ public class ProductsDBHelper extends SQLiteOpenHelper {
                 String ProductColor = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COLOR));
                 String ProductSize = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SIZE));
 
-                Product product = new Product(ProductID,ProductImage, ProductName, ProductPrice,ProductBrand,ProductDescribe, ProductColor, ProductSize );
+                Product product = new Product(ProductID,ProductImage, ProductName, ProductPrice,ProductBrand,ProductDescribe, ProductColor, ProductSize   );
                 product.setProductID(ProductID);
                 productList.add(product);
             } while (cursor.moveToNext());

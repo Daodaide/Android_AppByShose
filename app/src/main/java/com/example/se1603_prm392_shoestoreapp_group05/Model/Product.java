@@ -2,7 +2,7 @@ package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
 import kotlin.text.UStringsKt;
 
-public class Product {
+public class    Product {
     private int ProductID;
     private String ProductImage;
     private String ProductName;
@@ -13,6 +13,8 @@ public class Product {
     private String ProductSize;
     private String ProductDescribe;
     private String ProductColor;
+
+
     public Product(int ProductID, String ProductImage, String ProductName, double ProductPrice, String ProductBrand, String ProductDescribe, String ProductColor, String ProductSize) {
         this.ProductID = ProductID;
         this.ProductImage = ProductImage;
@@ -22,6 +24,7 @@ public class Product {
         this.ProductDescribe = ProductDescribe;
         this.ProductColor = ProductColor;
         this.ProductSize = ProductSize;
+
     }
 
     public int getProductID() {
@@ -86,4 +89,6 @@ public class Product {
     public void setProductSize(String size) {
         this.ProductSize = size;
     }
+
+
 }

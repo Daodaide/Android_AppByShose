@@ -30,13 +30,13 @@
             android:textSize="24sp" />
 
         <!-- Danh sách các mặt hàng trong giỏ hàng -->
-        <ListView
-            android:id="@+id/list_items"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp" />
+            android:layout_weight="1">
+        </androidx.recyclerview.widget.RecyclerView>
+
 
         <!-- Tổng số lượng và tổng giá trị của giỏ hàng -->
         <LinearLayout
