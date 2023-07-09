@@ -38,7 +38,10 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.bind(product);
+
+        holder.nameTextView.setText(product.getProductName());
+        holder.priceTextView.setText(String.format("$%.2f", product.getProductPrice()));
+        Picasso.get().load(product.getProductImage()).into(holder.imageView);
     }
 
     @Override

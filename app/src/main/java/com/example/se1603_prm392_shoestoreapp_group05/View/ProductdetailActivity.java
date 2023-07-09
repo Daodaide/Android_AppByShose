@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,8 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.se1603_prm392_shoestoreapp_group05.Data.CartDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
+import com.example.se1603_prm392_shoestoreapp_group05.Model.Cart;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.nex3z.notificationbadge.NotificationBadge;
@@ -33,8 +36,8 @@ public class ProductdetailActivity extends AppCompatActivity {
     private TextView txtPdDescribe;
     private Spinner spinnerQuantity;
     private NotificationBadge notificationBadge;
-    private int cartCount = 0;
-    private HashSet<Integer> cartProducts = new HashSet<>();
+    private CartDBHelper cartDBHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +49,18 @@ public class ProductdetailActivity extends AppCompatActivity {
         txtPdSize = findViewById(R.id.txtPdSize);
         txtPdPrice = findViewById(R.id.txtPdPrice);
         txtPdDescribe = findViewById(R.id.txtPdDescribe);
-        spinnerQuantity = findViewById(R.id.spinnerQuantity);
+
 
         notificationBadge = findViewById(R.id.menu_sl);
-
+        List<Product> productList = ProductsData.getSampleProducts();
         // Nhận thông tin sản phẩm từ intent
         Intent intent = getIntent();
         if (intent != null) {
             int productID = intent.getIntExtra("productID", 0);
             String productImage = intent.getStringExtra("productImage");
             String productName = intent.getStringExtra("productName");
-            double productPrice = intent.getDoubleExtra("productPrice", 0.0);
+            String productPriceStr = intent.getStringExtra("productPrice");
+            double productPrice = Double.parseDouble(productPriceStr);
             String productBrand = intent.getStringExtra("productBrand");
             String productDescribe = intent.getStringExtra("productDescribe");
             String productColor = intent.getStringExtra("productColor");
@@ -69,43 +73,42 @@ public class ProductdetailActivity extends AppCompatActivity {
             txtPdName.setText(productName);
             txtPdColor.setText(productColor);
             txtPdSize.setText(productSize);
-            txtPdPrice.setText(String.valueOf(product.getProductPrice()));
+            txtPdPrice.setText("$" + String.format("%.2f", productPrice));
             txtPdDescribe.setText(productDescribe);
 
-           Integer[] so =new Integer[]{1,2,3,4,5,6,7,8,9,10};
-            ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, so);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerQuantity.setAdapter(adapter);
-
-            // Xử lý sự kiện khi nhấn nút "Add to Cart"
+            ImageView back = findViewById(R.id.backhome);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ProductdetailActivity.this, HomeActivity.class);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            });
             Button addToCartButton = findViewById(R.id.addtocart);
             addToCartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int quantity = (int) spinnerQuantity.getSelectedItem();
+                    // Add the product to the cart
+                    Cart cartItem = new Cart(0, product, 1); // Assuming quantity is 1 for simplicity
+                    CartDBHelper cartDBHelper = new CartDBHelper(ProductdetailActivity.this);
+                    cartDBHelper.insertCart(cartItem);
 
-                    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-                    if (cartProducts.contains(productID)) {
-                        Toast.makeText(ProductdetailActivity.this, "Product already added to cart", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Thêm sản phẩm vào giỏ hàng và cập nhật số lượng trên notification badge
-                        cartProducts.add(productID);
-                        cartCount += quantity;
-                        notificationBadge.setNumber(cartCount);
-                        Toast.makeText(ProductdetailActivity.this, "Product added to cart", Toast.LENGTH_SHORT).show();
-                    }
+                    // Update the notification badge
+                    int cartItemCount = cartDBHelper.getCartCount();
+                    notificationBadge.setNumber(cartItemCount);
+
+                    // Display a toast message
+                    Toast.makeText(ProductdetailActivity.this, "Product added to cart", Toast.LENGTH_SHORT).show();
                 }
             });
-
-            // Xử lý sự kiện khi nhấn vào biểu tượng giỏ hàng
             ImageView cartImageView = findViewById(R.id.CartimageView);
             cartImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Chuyển tới trang CartActivity
-                    Intent cartIntent = new Intent(ProductdetailActivity.this, CartActivity.class);
-                    cartIntent.putExtra("cartProducts", new ArrayList<>(cartProducts));
-                    startActivity(cartIntent);
+                    // Start the CartActivity
+                    Intent intent = new Intent(ProductdetailActivity.this, CartActivity.class);
+                    startActivity(intent);
                 }
             });
         }

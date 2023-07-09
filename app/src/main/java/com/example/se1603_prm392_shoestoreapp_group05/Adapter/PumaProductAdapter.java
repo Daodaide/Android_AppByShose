@@ -37,7 +37,10 @@ public class PumaProductAdapter extends RecyclerView.Adapter<PumaProductAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.bind(product);
+
+        holder.productName.setText(product.getProductName());
+        holder.productPrice.setText(String.format("$%.2f", product.getProductPrice()));
+        Picasso.get().load(product.getProductImage()).into(holder.productImage);
     }
 
     @Override
