@@ -1,8 +1,6 @@
 package com.example.se1603_prm392_shoestoreapp_group05.View;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,21 +9,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.se1603_prm392_shoestoreapp_group05.Data.RegisterHelper;
+import com.example.se1603_prm392_shoestoreapp_group05.Controller.UserController;
+import com.example.se1603_prm392_shoestoreapp_group05.Interface.LoginView;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
+import com.example.se1603_prm392_shoestoreapp_group05.Data.RegisterHelper;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
 
-    private RegisterHelper databaseHelper;
+    private UserController userController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        RegisterHelper registerHelper = new RegisterHelper(this); // Pass context to RegisterHelper
+        userController = new UserController(registerHelper);
 
         Button signInButton = findViewById(R.id.btn_SignUp);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -33,15 +36,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
-                finish(); // Để kết thúc hoạt động của trang Register
+                finish();
             }
         });
 
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.btn_login);
-
-        databaseHelper = new RegisterHelper(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,47 +51,40 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString().trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+                    showEmptyFieldsError();
                 } else {
-                    if (authenticateUser(username, password)) {
-                        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        // Chuyển sang trang chính
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        intent.putExtra("USERNAME", username);
-                        startActivity(intent);
+                    if (userController.authenticateUser(username, password)) {
+                        showLoginSuccess();
+                        boolean isAdmin = username.equals("admin") && password.equals("123");
+                        if (isAdmin) {
+                            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.putExtra("USERNAME", username);
+                            startActivity(intent);
+                        }
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                        showInvalidCredentials();
                     }
                 }
             }
         });
     }
 
+    @Override
+    public void showEmptyFieldsError() {
+        Toast.makeText(LoginActivity.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+    }
 
-    private boolean authenticateUser(String username, String password) {
-        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+    @Override
+    public void showLoginSuccess() {
+        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+    }
 
-        String[] projection = {
-                RegisterHelper.COLUMN_ID
-        };
-
-        String selection = RegisterHelper.COLUMN_USERNAME + " = ? AND " + RegisterHelper.COLUMN_PASSWORD + " = ?";
-        String[] selectionArgs = {username, password};
-
-        Cursor cursor = db.query(
-                RegisterHelper.TABLE_USER,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-
-        int count = cursor.getCount();
-        cursor.close();
-
-        return count > 0;
+    @Override
+    public void showInvalidCredentials() {
+        Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
     }
 }

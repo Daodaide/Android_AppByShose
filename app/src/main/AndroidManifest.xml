@@ -32,7 +32,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDSmkSye5jafrqHUz2327dB7_uDiSHlNgw" />
+            android:value="AIzaSyD4tybmE2Upetg95PN5oSRXad_pYw8YS9o" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:exported="true" />
@@ -71,13 +71,14 @@
             android:name=".View.RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".View.ChatActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".View.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".View.AdminActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".View.ChatActivity"
             android:exported="false"/>
         <activity
             android:name=".View.HomeActivity"
