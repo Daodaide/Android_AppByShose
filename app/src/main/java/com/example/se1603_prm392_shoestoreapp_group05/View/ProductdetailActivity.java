@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,7 @@ import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +40,7 @@ public class ProductdetailActivity extends AppCompatActivity {
     private NotificationBadge notificationBadge;
     private CartDBHelper cartDBHelper;
 
-
+    private List<Cart> cartList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,14 +88,25 @@ public class ProductdetailActivity extends AppCompatActivity {
                 }
             });
             Button addToCartButton = findViewById(R.id.addtocart);
+            Intent intent1 = new Intent(ProductdetailActivity.this, CartActivity.class);
+            Intent intents = new Intent(ProductdetailActivity.this, HomeActivity.class);
             addToCartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // Add the product to the cart
-                    Cart cartItem = new Cart(0, product, 1); // Assuming quantity is 1 for simplicity
+                    Cart cartItem = new Cart(0, product, 1);
+
                     CartDBHelper cartDBHelper = new CartDBHelper(ProductdetailActivity.this);
                     cartDBHelper.insertCart(cartItem);
 
+
+                    cartList.add(cartItem);
+
+
+                    intent1.putExtra("cartItem", (Serializable) cartList);
+                    intents.putExtra("cartItems", (Serializable) cartList);
+                    startActivity(intents);
+                    startActivity(intent1);
                     // Update the notification badge
                     int cartItemCount = cartDBHelper.getCartCount();
                     notificationBadge.setNumber(cartItemCount);
@@ -106,9 +119,9 @@ public class ProductdetailActivity extends AppCompatActivity {
             cartImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Start the CartActivity
-                    Intent intent = new Intent(ProductdetailActivity.this, CartActivity.class);
-                    startActivity(intent);
+
+                    intent1.putExtra("cartItem", (Serializable) cartList);
+                    startActivity(intent1);
                 }
             });
         }

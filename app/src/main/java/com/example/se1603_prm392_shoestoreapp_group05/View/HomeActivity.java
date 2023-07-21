@@ -22,12 +22,14 @@ import android.widget.ViewFlipper;
 import com.example.se1603_prm392_shoestoreapp_group05.Adapter.HomeAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.ProductsData;
+import com.example.se1603_prm392_shoestoreapp_group05.Model.Cart;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 //import com.example.se1603_prm392_shoestoreapp_group05.Model.Utils;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -188,6 +190,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         CarttextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,10 +242,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+        Intent intent1 = getIntent();
         CartImageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                List<Cart> cartList = (List<Cart>) intent1.getSerializableExtra("cartItems");
+                intent.putExtra("cartItem", (Serializable) cartList);
                 startActivity(intent);
             }
         });
