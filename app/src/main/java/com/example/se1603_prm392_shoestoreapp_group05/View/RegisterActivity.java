@@ -2,7 +2,6 @@ package com.example.se1603_prm392_shoestoreapp_group05.View;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -78,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a numeric phone number", Toast.LENGTH_SHORT).show();
         } else {
             // Tạo đối tượng User từ thông tin người dùng
-            User newUser = new User(username, password, email, phoneNum, address);
+            User newUser = new User(username, password);
 
             // Thêm người dùng vào cơ sở dữ liệu
             boolean isSuccess = addUserToDatabase(newUser);

@@ -1,8 +1,10 @@
 package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
+import java.io.Serializable;
+
 import kotlin.text.UStringsKt;
 
-public class    Product {
+public class    Product implements Serializable {
     private int ProductID;
     private String ProductImage;
     private String ProductName;

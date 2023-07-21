@@ -4,17 +4,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Message;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHolder> {
     private List<Message> messageList;
-
 
     public ChatAdapter(List<Message> messageList) {
         this.messageList = messageList;
@@ -22,38 +25,34 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
-        return new ViewHolder(view);
+    public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_messager, parent, false);
+        return new MessageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         Message message = messageList.get(position);
-        holder.messageTextView.setText(message.getMessage());
+        holder.senderTextView.setText(message.getSender());
+        holder.contentTextView.setText(message.getContent());
         holder.timestampTextView.setText(message.getTimestamp());
-
-        if ("admin".equals(message.getSender())) {
-            holder.senderTextView.setText("admin");
-        } else {
-            holder.senderTextView.setText("user");
-        }
     }
+
 
     @Override
     public int getItemCount() {
         return messageList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView senderTextView;
-        TextView messageTextView;
-        TextView timestampTextView;
+    public class MessageViewHolder extends RecyclerView.ViewHolder {
+        public TextView senderTextView;
+        public TextView contentTextView;
+        public TextView timestampTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
             senderTextView = itemView.findViewById(R.id.senderTextView);
-            messageTextView = itemView.findViewById(R.id.messageTextView);
+            contentTextView = itemView.findViewById(R.id.contentTextView);
             timestampTextView = itemView.findViewById(R.id.timestampTextView);
         }
     }

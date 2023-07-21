@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.example.se1603_prm392_shoestoreapp_group05.Adapter.CartAdapter;
 import com.example.se1603_prm392_shoestoreapp_group05.Data.CartDBHelper;
 import com.example.se1603_prm392_shoestoreapp_group05.Model.Cart;
+import com.example.se1603_prm392_shoestoreapp_group05.Model.Product;
 import com.example.se1603_prm392_shoestoreapp_group05.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerViewCart;
-    private CartAdapter cartAdapter;
+    private CartAdapter cartAdapter ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +29,15 @@ public class CartActivity extends AppCompatActivity {
 
         recyclerViewCart = findViewById(R.id.recyclerViewCart);
 
-        // Set the RecyclerView layout manager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewCart.setLayoutManager(layoutManager);
 
-        // Retrieve the cart item data from the Intent
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("cartItem")) {
-            Cart cartItem = intent.getParcelableExtra("cartItem");
-            List<Cart> cartList = new ArrayList<>();
-            cartList.add(cartItem);
 
-            // Create and set the CartAdapter
-            cartAdapter = new CartAdapter(this, cartList);
-            recyclerViewCart.setAdapter(cartAdapter);
-        }
+        Intent intent = getIntent();
+        List<Cart> cartList = (List<Cart>) intent.getSerializableExtra("cartItem");
+        cartAdapter = new CartAdapter(this, cartList);
+
+        recyclerViewCart.setAdapter(cartAdapter);
+
     }
 }

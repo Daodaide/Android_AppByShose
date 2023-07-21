@@ -1,9 +1,12 @@
 package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
-public class Cart {
+
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     private int cartId;
     private Product product;
-    private int quantity;
+    private int quantity =1;
 
     public Cart(int cartId, Product product, int quantity) {
         this.cartId = cartId;

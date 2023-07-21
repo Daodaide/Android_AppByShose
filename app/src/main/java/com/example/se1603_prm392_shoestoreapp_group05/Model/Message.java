@@ -2,12 +2,17 @@ package com.example.se1603_prm392_shoestoreapp_group05.Model;
 
 public class Message {
     private String sender;
-    private String message;
+    private String content;
     private String timestamp;
 
-    public Message(String sender, String message) {
+
+    public Message() {
+        // Required empty constructor for Firebase
+    }
+
+    public Message(String sender, String content, String timestamp) {
         this.sender = sender;
-        this.message = message;
+        this.content = content;
         this.timestamp = timestamp;
     }
 
@@ -15,11 +20,23 @@ public class Message {
         return sender;
     }
 
-    public String getMessage() {
-        return message;
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
