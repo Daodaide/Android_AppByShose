@@ -63,9 +63,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                             startActivity(intent);
                         } else {
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            intent.putExtra("USERNAME", username);
-                            startActivity(intent);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                intent.putExtra("USERNAME", username);
+                                startActivity(intent);
                         }
                         finish();
                     } else {
